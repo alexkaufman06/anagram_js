@@ -1,18 +1,16 @@
-var anagram = function(word, possible_anagrams) {
+var anagram = function(word, possibleAnagrams) {
   var letters = word.split("").sort();
   var answer = [];
 
-  possible_anagrams.forEach(function(word) {
+  possibleAnagrams.forEach(function(possibleAnagram) {
     var wordMatch = true;
-    var index = 0;
-    word.split("").sort().forEach(function(letter) {
-      if (letter !== letters[index]) {
+    possibleAnagram.split("").sort().forEach(function(letter) {
+      if (letters.indexOf(letter) === -1) {
         wordMatch = false;
       }
-      index += 1;
     });
     if (wordMatch) {
-      answer.push(word);
+      answer.push(possibleAnagram);
     }
   });
   return answer;
