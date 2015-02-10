@@ -15,3 +15,17 @@ var anagram = function(word, possibleAnagrams) {
   });
   return answer;
 };
+
+$(document).ready(function() {
+  $("form#anagram-finder").submit(function(event) {
+
+    var word = $("input#word").val();
+    var possibleAnagrams = $("input#possible-anagrams").val().split(", ");
+    var answer = anagram(word, possibleAnagrams);
+    var answerString = answer.join(", ")
+
+    $(".matching-anagrams").text(answerString);
+    $("#result").show();
+    event.preventDefault();
+  });
+});
